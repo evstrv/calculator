@@ -9,6 +9,7 @@ class Calculate {
 
     private render = () => {
         this.input = document.createElement('input');
+        this.root.appendChild(this.input);
         const controls: Array<Array<string>> = [
             ['7', '8', '9', '*'],
             ['4', '5', '6', '/'],
@@ -18,10 +19,17 @@ class Calculate {
 
         for(const ar of controls) {
             for(const i of ar) {
-                if() {
+                if(i) {
                     const el: HTMLDivElement = document.createElement('div');
+                    el.innerText = i;
+                    el.classList.add('cell');
+                    this.root.appendChild(el);
+                } else {
+                    this.root.appendChild(document.createElement('div'));
                 }
             }
         }
     };
 }
+
+const calc = new Calculate('app');
