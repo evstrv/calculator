@@ -33,4 +33,3 @@ class Calculate {
 }
 
 const calc = new Calculate('app');
-// add commit
