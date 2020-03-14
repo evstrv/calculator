@@ -1,0 +1,10 @@
+{
+    "compilerOprions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node"
+    },
+    "include": [
+        "*"
+    ]
+}

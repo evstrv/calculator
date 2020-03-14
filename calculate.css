@@ -13,7 +13,7 @@ body div.calculate {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 20%;
+  width: 40%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -28,18 +28,41 @@ body div.calculate > input {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
+  text-align: end;
+}
+
+body div.calculate > input:focus {
+  outline: none;
 }
 
 body div.calculate > div {
-  width: calc(25% - 2px);
+  width: calc(20%);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-bottom: 2px;
+  margin-right: 2px;
 }
 
 body div.calculate > div.cell {
   text-align: center;
   border: 1px solid lightsteelblue;
   border-radius: 5px;
+  padding: 1rem 0;
+}
+
+body div.calculate > div.cell:nth-child(4n+4) {
+  margin-right: auto;
+}
+
+body div.calculate > div.cell:nth-child(4n+5) {
+  margin-right: 0;
+}
+
+body div.calculate > div.cell:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 4px 0px black;
+          box-shadow: 0 0 4px 0px black;
+  -webkit-transition: .25s;
+  transition: .25s;
 }
 /*# sourceMappingURL=calculate.css.map */
