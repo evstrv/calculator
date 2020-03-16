@@ -3,6 +3,7 @@ var Calculate = /** @class */ (function () {
         var _this = this;
         this.result = 0;
         this.stack = [];
+        this.numb = 9;
         this.onClick = function (event) {
             var val = event.target.innerText;
             switch (val) {
@@ -11,6 +12,7 @@ var Calculate = /** @class */ (function () {
                 case '/':
                 case '-':
                 case '=':
+                case '√':
                     _this.stack.push(_this.input.value);
                     if (_this.stack.length > 2) {
                         _this.processing();
@@ -21,6 +23,10 @@ var Calculate = /** @class */ (function () {
                         _this.processing();
                     }
                     break;
+                case 'C':
+                    _this.stack = [];
+                    _this.input.value = '0';
+                    break;
                 default:
                     _this.input.value = parseFloat(_this.input.value + val).toString();
                     break;
@@ -28,6 +34,7 @@ var Calculate = /** @class */ (function () {
         };
         this.processing = function () {
             var res = 0;
+            var test = 9;
             while (_this.stack.length > 0) {
                 var val = _this.stack.shift();
                 switch (val) {
@@ -46,6 +53,11 @@ var Calculate = /** @class */ (function () {
                     case '=':
                         _this.stack.shift();
                         break;
+                    case '√':
+                        // не работает только здесь
+                        // res = Math.sqrt(test);
+                        // console.log(res); 
+                        break;
                     default:
                         res = parseFloat(val);
                         break;
@@ -61,10 +73,10 @@ var Calculate = /** @class */ (function () {
             _this.input.value = _this.result.toString();
             _this.root.appendChild(_this.input);
             var controls = [
-                ['7', '8', '9', '*'],
-                ['4', '5', '6', '/'],
-                ['1', '2', '3', '-'],
-                ['', '0', '=', '+']
+                ['7', '8', '9', '*', 'C'],
+                ['4', '5', '6', '/', '√'],
+                ['1', '2', '3', '-', '±'],
+                ['', '0', ',', '+', '=']
             ];
             for (var _i = 0, controls_1 = controls; _i < controls_1.length; _i++) {
                 var ar = controls_1[_i];

@@ -3,6 +3,7 @@ class Calculate {
     private input: HTMLInputElement;
     private result: number = 0;
     private stack: Array<string> = [];
+    private numb: number = 9;
 
     constructor(id: string) {
         this.root = document.getElementById(id);
@@ -16,7 +17,8 @@ class Calculate {
             case '+': 
             case '/': 
             case '-': 
-            case '=': 
+            case '=':
+            case '√': 
                 this.stack.push(this.input.value);
                 if(this.stack.length > 2) {
                     this.processing();
@@ -27,6 +29,10 @@ class Calculate {
                     this.processing();
                 }
                 break;
+            case 'C':
+                this.stack = [];
+                this.input.value = '0';
+                break;
             default: 
                 this.input.value = parseFloat(this.input.value + val).toString();
                 break;
@@ -35,6 +41,7 @@ class Calculate {
 
     private processing = () => {
         let res = 0;
+        let test = 9;
         while(this.stack.length > 0) {
             const val = this.stack.shift();
             switch(val) {
@@ -53,6 +60,11 @@ class Calculate {
                 case '=':
                     this.stack.shift();
                     break;
+                case '√':
+                    // не работает только здесь
+                    // res = Math.sqrt(test);
+                    // console.log(res); 
+                    break;
                 default:
                     res = parseFloat(val);
                     break;
@@ -69,10 +81,10 @@ class Calculate {
         this.input.value = this.result.toString();
         this.root.appendChild(this.input);
         const controls: Array<Array<string>> = [
-            ['7', '8', '9', '*'],
-            ['4', '5', '6', '/'],
-            ['1', '2', '3', '-'],
-            ['', '0', '=', '+']
+            ['7', '8', '9', '*', 'C'],
+            ['4', '5', '6', '/', '√'],
+            ['1', '2', '3', '-', '±'],
+            ['', '0', ',', '+', '=']
         ];
 
         for(const ar of controls) {
