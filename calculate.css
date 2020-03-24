@@ -19,7 +19,7 @@ body div.calculate {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 40%;
+  width: 300px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
