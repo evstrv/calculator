@@ -23,15 +23,22 @@ var Calculate = /** @class */ (function () {
                     }
                     break;
                 case 'x²':
-                    var squared = parseFloat(_this.input.value) * parseFloat(_this.input.value);
+                    var squared = Math.pow(parseFloat(_this.input.value), 2);
                     _this.input.value = squared.toString();
                     break;
                 case '.':
-                    _this.input.value = _this.input.value + '.';
+                    var input = _this.input.value.length - 1;
+                    if (_this.input.value[input] === '.') {
+                        var point = _this.input.value.replace('.', '');
+                        _this.input.value = point;
+                    }
+                    else {
+                        _this.input.value = _this.input.value + '.';
+                    }
                     break;
                 case '±':
                     if (_this.input.value[0] === '-') {
-                        var delMinus = _this.input.value.replace(/-/g, '');
+                        var delMinus = _this.input.value.replace('-', '');
                         _this.input.value = delMinus;
                     }
                     else {

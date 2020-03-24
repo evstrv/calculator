@@ -29,15 +29,21 @@ class Calculate {
                 }
                 break;
             case 'x²':
-                const squared = parseFloat(this.input.value) * parseFloat(this.input.value);
+                var squared = Math.pow(parseFloat(this.input.value), 2);
                 this.input.value = squared.toString();
                 break;
             case '.':
-                this.input.value = this.input.value + '.';
+                var input = this.input.value.length-1;
+                if(this.input.value[input] === '.') {
+                    var point = this.input.value.replace('.', '');
+                    this.input.value = point;
+                } else {
+                    this.input.value = this.input.value + '.';
+                }
                 break;
             case '±':
                 if(this.input.value[0] === '-') {
-                    const delMinus = this.input.value.replace(/-/g, '');
+                    const delMinus = this.input.value.replace('-', '');
                     this.input.value = delMinus;
                 } else {
                     this.input.value = '-' + this.input.value;
